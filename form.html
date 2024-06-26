@@ -5,10 +5,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Form</title>
         <link rel="stylesheet" href="style2.css">
+        <script>
+    function validateForm() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+        if (email === "") {
+            alert("Email must be filled out");
+            return false;
+        } else if (!emailRegex.test(email)) {
+            alert("Invalid email format");
+            return false;
+        }
+    
+        if (password === "") {
+            alert("Password must be filled out");
+            return false;
+        } else if (password.length < 8) {
+            alert("Password must be at least 8 characters long");
+            return false;
+        }
+    
+        return true;
+    }
+    </script>
     </head>
     <body>
     <section>
     <div class="lgform">
+        <form onsubmit="return validateForm()">
         <div class="header"><h2>Login</h2></div>
         <div class="input-box">
             Email:<input type="email" name="email" id="email" placeholder="email id" required>
@@ -22,7 +48,7 @@
         <div class="btn"> <button type="submit"><a href="">Login</a></button></div>
         <div class="fp"><a href="#">forgot password</a></div>
         <div class="reg">Don't you have an account..? <a href="#">Register</a></div>
-        
+        </form>
         
     </div>
 </section>
